@@ -380,11 +380,6 @@ body {
     background: url("../img/BF_WEB_01.jpg") top center no-repeat;
 }
 
-nav {
-    position: absolute;
-    top: 0px;
-}
-
 header {
     padding-top: 28px;
     padding-bottom: 18px;
@@ -398,10 +393,72 @@ header h1#logo {
     height: 65px;
 }
 
-nav a {
-    text-transform: uppercase;
-    background-color: red;
+nav {
+    position: absolute;
+    top: 0;
+    width: 941px;
+    font-family: Impact, Impact5, Charcoal6, sans-serif;
+    letter-spacing: .12em;
+}
+
+nav .menu {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    background-color: #ff3300;
     color: white;
+    top: 0;
+    position: absolute;
+    text-transform: uppercase;
+}
+
+nav .main.menu {
+    left: 0;
+    top: -79px;
+    -webkit-transition: top 400ms ease-out;
+}
+nav .main.menu:hover {
+    top: 0;
+}
+
+nav .contact.menu {
+    right: 0;
+}
+
+nav .menu .item {
+    font-size: 8pt;
+    display: block;
+    padding:  3px 0 3px 0;
+}
+
+nav .menu .item a {
+    text-decoration: none;
+    display: block;
+    padding-left: 3px;
+}
+
+nav .menu .item a:hover {
+    background-color: white;
+    color: red;
+}
+
+nav .menu .item a:active, a:visited {
+    color: white;
+}
+
+
+nav .menu .item.title {
+    padding: 4px 4px 0 4px;
+    cursor: pointer;
+    font-size: 14pt;
+    font-weight: lighter;
+
+}
+
+#header {
+    margin: 0 auto;
+    width: 941px;
+    background-color: rgba(255, 255, 9, 0.5);
 }
 
 #container {
@@ -409,7 +466,7 @@ nav a {
     background-color: rgba(128, 128, 128, .5);
 }
 
-#container #top{
+#container #top {
     background-color: rgba(255, 255, 255, .5);
 }
 
@@ -417,15 +474,17 @@ nav a {
     background-color: rgba(50, 50, 50, .5);
 }
 
-#container .content{
+#container .content {
     margin: 0 auto;
     width: 941px;
 }
+
 #container #top .content {
     height: 269px;
     background-color: rgba(128, 158, 128, .5);
 }
-#container #bottom .content{
+
+#container #bottom .content {
     height: 493px;
     background-color: rgba(158, 158, 128, .5);
 }
