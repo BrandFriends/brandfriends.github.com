@@ -51,8 +51,9 @@ html {
 
 body {
 	margin: 0;
-	font-size: 13px;
-	line-height: 1.231;
+	padding: 0;
+	font-size: 12px;
+	line-height: 1.159;
 }
 
 body, button, input, select, textarea {
@@ -67,13 +68,13 @@ body, button, input, select, textarea {
  */
 
 ::-moz-selection {
-	background: #fe57a1;
+	background: #ff3300;
 	color: #fff;
 	text-shadow: none;
 }
 
 ::selection {
-	background: #fe57a1;
+	background: #ff3300;
 	color: #fff;
 	text-shadow: none;
 }
@@ -379,8 +380,7 @@ body {
 	padding: 0;
 	background: url("../img/BF_WEB_01.jpg") top center no-repeat;
 	font-family: Impact, Impact5, Charcoal6, sans-serif;
-	font-size: 9pt;
-	letter-spacing: .15em;
+	letter-spacing: 1px;
 	color: #555;
 }
 
@@ -406,19 +406,23 @@ nav {
 
 nav .menu {
 	list-style-type: none;
-	padding: 0;
+	padding: 0 8px 0 8px;
 	margin: 0;
 	background-color: #ff3300;
 	color: white;
 	top: 0;
 	position: absolute;
 	text-transform: uppercase;
+	box-shadow: 0 0 2px black;
 }
 
 nav .main.menu {
 	left: 0;
-	top: -76px;
+	top: -72px;
 	-webkit-transition: top 400ms ease-out;
+	-moz-transition: top 400ms ease-out;
+	-o-transition: top 400ms ease-out;
+	transition: top 400ms ease-out;
 }
 
 nav .main.menu:hover {
@@ -430,9 +434,8 @@ nav .contact.menu {
 }
 
 nav .menu .item {
-	font-size: 8pt;
-	display: block;
 	padding: 3px 0 3px 0;
+	line-height: 12px;
 }
 
 nav .menu .item a,
@@ -451,12 +454,11 @@ nav .menu .item a:hover {
 }
 
 nav .menu .item.title {
-	padding: 4px 4px 0 4px;
-	cursor: pointer;
-	font-size: 14pt;
-	font-weight: lighter;
+	font-size: 140%;
+	line-height: 25px;
 	background-color: #ff3300;
 }
+
 nav .menu .item.title a:hover {
 	background-color: #ff3300;
 	color: white;
@@ -472,11 +474,16 @@ nav .menu .item.title a:hover {
 }
 
 #container #top {
+	position: relative;
+	z-index: 20;
 	background: url('../img/BG_TOP.gif') bottom center no-repeat;
+	box-shadow: 0 0 2px black;
 }
 
 #container #bottom {
+	z-index: 10;
 	background-color: rgba(50, 50, 50, .5);
+	box-shadow: 0 0 4px black;
 }
 
 #container .content {
@@ -516,6 +523,8 @@ nav .menu .item.title a:hover {
 }
 
 footer {
+	position: relative;
+	z-index: -1;
 	height: 135px;
 	background: url('../img/BG_bottom.gif') top left repeat-x;
 }
@@ -527,7 +536,7 @@ footer .content {
 	width: 941px;
 	text-align: right;
 	color: silver;
-	font-size: 7pt;
+	font-size: 80%;
 }
 
 /* ==|== primary styles =====================================================
