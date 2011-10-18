@@ -378,12 +378,15 @@ td {
 body {
 	margin: 0;
 	padding: 0;
-	background: url("../img/BF_WEB_01.jpg") top center no-repeat;
+	background: #1e1e1e url("../img/BF_WEB_01.jpg") top center no-repeat;
 	font-family: Impact, Impact5, Charcoal6, sans-serif;
-	letter-spacing: 1px;
+	letter-spacing: .15em;
 	color: #555;
 }
-
+h2 {
+    -webkit-margin-after: 0;
+    -webkit-margin-before: 0;
+}
 header {
 	padding-top: 28px;
 	padding-bottom: 18px;
@@ -401,12 +404,12 @@ nav {
 	position: absolute;
 	top: 0;
 	width: 941px;
-	letter-spacing: .12em;
+	letter-spacing: .15em;
 }
 
 nav .menu {
 	list-style-type: none;
-	padding: 0 8px 0 8px;
+	padding: 0;
 	margin: 0;
 	background-color: #ff3300;
 	color: white;
@@ -431,10 +434,11 @@ nav .main.menu:hover {
 
 nav .contact.menu {
 	right: 0;
+
 }
 
 nav .menu .item {
-	padding: 3px 0 3px 0;
+	padding: 2px 0 2px 0;
 	line-height: 12px;
 }
 
@@ -444,7 +448,7 @@ nav .menu .item a:active,
 nav .menu .item a:visited {
 	text-decoration: none;
 	display: block;
-	padding-left: 3px;
+	padding: 1px 6px 1px 6px;
 	color: white;
 }
 
@@ -454,6 +458,7 @@ nav .menu .item a:hover {
 }
 
 nav .menu .item.title {
+    padding: 0 6px 0 6px;
 	font-size: 140%;
 	line-height: 25px;
 	background-color: #ff3300;
@@ -486,12 +491,10 @@ nav .menu .item.title a:hover {
 	box-shadow: 0 0 4px black;
 }
 
-#container .content {
+#container #top .content {
+    position: relative;
 	margin: 0 auto;
 	width: 941px;
-}
-
-#container #top .content {
 	height: 269px;
 }
 
@@ -500,6 +503,14 @@ nav .menu .item.title a:hover {
 	background-color: rgba(158, 158, 128, .5);
 }
 
+.page {
+    display: block;
+    padding: 0;
+    margin: 0;
+}
+.page.hidden {
+	display: none;
+}
 .news.page {
 	margin-left: -20px;
 }
