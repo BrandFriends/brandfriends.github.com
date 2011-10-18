@@ -383,10 +383,12 @@ body {
 	letter-spacing: .15em;
 	color: #555;
 }
+
 h2 {
-    -webkit-margin-after: 0;
-    -webkit-margin-before: 0;
+	-webkit-margin-after: 0;
+	-webkit-margin-before: 0;
 }
+
 header {
 	padding-top: 28px;
 	padding-bottom: 18px;
@@ -458,7 +460,7 @@ nav .menu .item a:hover {
 }
 
 nav .menu .item.title {
-    padding: 0 6px 0 6px;
+	padding: 0 6px 0 6px;
 	font-size: 140%;
 	line-height: 25px;
 	background-color: #ff3300;
@@ -492,10 +494,11 @@ nav .menu .item.title a:hover {
 }
 
 #container #top .content {
-    position: relative;
+	position: relative;
 	margin: 0 auto;
 	width: 941px;
 	height: 269px;
+	overflow: hidden;
 }
 
 #container #bottom .content {
@@ -503,14 +506,26 @@ nav .menu .item.title a:hover {
 	background-color: rgba(158, 158, 128, .5);
 }
 
-.page {
-    display: block;
-    padding: 0;
-    margin: 0;
+.pages {
+	position: relative;
+	-webkit-transition: top 400ms ease-out;
+	-moz-transition: top 400ms ease-out;
+	-o-transition: top 400ms ease-out;
+	transition: top 400ms ease-out;
 }
+.page {
+	position: relative;
+	display: block;
+	padding: 0;
+	margin: 0;
+	height: 269px;
+	float: left;
+}
+
 .page.hidden {
 	display: none;
 }
+
 .news.page {
 	margin-left: -20px;
 }
