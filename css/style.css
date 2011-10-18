@@ -378,6 +378,10 @@ body {
     margin: 0;
     padding: 0;
     background: url("../img/BF_WEB_01.jpg") top center no-repeat;
+    font-family: Impact, Impact5, Charcoal6, sans-serif;
+    font-size: 9pt;
+    letter-spacing: .15em;
+    color: #555;
 }
 
 header {
@@ -388,16 +392,15 @@ header {
 header h1#logo {
     text-indent: -9999px;
     margin: 0 auto;
-    background: url('../img/logo.jpg') top center;
-    width: 503px;
-    height: 65px;
+    background: url('../img/BRANDFRIENDS_logo.gif') top center no-repeat;
+    width: 502px;
+    height: 61px;
 }
 
 nav {
     position: absolute;
     top: 0;
     width: 941px;
-    font-family: Impact, Impact5, Charcoal6, sans-serif;
     letter-spacing: .12em;
 }
 
@@ -446,28 +449,24 @@ nav .menu .item a:active, a:visited {
     color: white;
 }
 
-
 nav .menu .item.title {
     padding: 4px 4px 0 4px;
     cursor: pointer;
     font-size: 14pt;
     font-weight: lighter;
-
 }
 
 #header {
     margin: 0 auto;
     width: 941px;
-    background-color: rgba(255, 255, 9, 0.5);
 }
 
 #container {
     position: relative;
-    background-color: rgba(128, 128, 128, .5);
 }
 
 #container #top {
-    background-color: rgba(255, 255, 255, .5);
+    background: url('../img/BG_TOP.gif') bottom center no-repeat;
 }
 
 #container #bottom {
@@ -481,7 +480,6 @@ nav .menu .item.title {
 
 #container #top .content {
     height: 269px;
-    background-color: rgba(128, 158, 128, .5);
 }
 
 #container #bottom .content {
@@ -489,6 +487,26 @@ nav .menu .item.title {
     background-color: rgba(158, 158, 128, .5);
 }
 
+.news.page {
+    margin-left: -20px;
+}
+
+.news.page .item {
+    float: left;
+    margin-left: 20px;
+    width: 220px;
+}
+
+.news.page .item h2 {
+    padding: 5px 0 5px 0;
+    margin: 0;
+    text-transform: uppercase;
+}
+.news.page .item p {
+    text-align: justify;
+    margin: 0;
+    padding: 0;
+}
 footer {
     height: 135px;
 }
