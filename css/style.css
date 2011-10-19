@@ -378,7 +378,7 @@ td {
 body {
 	margin: 0;
 	padding: 0;
-	background: #1e1e1e url("../img/BF_WEB_01.jpg") top center no-repeat;
+	background: #1e1e1e;
 	font-family: Impact, Impact5, Charcoal6, sans-serif;
 	letter-spacing: .15em;
 	color: #555;
