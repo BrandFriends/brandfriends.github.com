@@ -578,7 +578,7 @@ nav .menu .item.title a:hover {
 	background-color: #444;
 	color: #999;
 	height: 17px;
-	box-shadow: 0 0 1px 2px #333;
+	box-shadow: -1px 1px 1px #555;
 }
 #container #bottom .content .previous.button {
 	margin-top: 0;
@@ -620,10 +620,10 @@ nav .menu .item.title a:hover {
 }
 #container #bottom .content .projects .button {
 	position: relative;
-	min-width: 6px;
+	min-width: 10px;
 	float: left;
-	height: 12px;
 	margin-right: 10px;
+	top: -1px;
 }
 #container #bottom .content .projects .button:active {
 	background-color: red;
@@ -644,17 +644,17 @@ nav .menu .item.title a:hover {
 	width:50%;
 }
 #container #bottom .content .projects .page.light {
-	background: url("../img/BG_portfolio_01.jpg") top left repeat-x;
+	background: url("../img/orange_bg.jpg") top left repeat-x;
 	color: #ddd;
 }
-#container #bottom .content .projects .page.light:after {
+#container #bottom .content .projects .page:after {
 	content: "";
 	display: block;
 	position: absolute;
 	left:0;
 	bottom:0;
 	width: 100%;
-	height: 10px;
+	height: 6px;
 	box-shadow: inset 0 -2px 5px #333;
 	z-index: 500;
 	pointer-events: none;
@@ -664,24 +664,12 @@ nav .menu .item.title a:hover {
 	background: url("../img/BG_portfolio_01.jpg") top left repeat-x;
 	color: #ddd;
 }
-#container #bottom .content .projects .page.dark:after {
-	content: "";
-	display: block;
-	position: absolute;
-	left:0;
-	bottom:0;
-	width: 100%;
-	height: 10px;
-	box-shadow: inset 0 -2px 5px #333;
-	z-index: 500;
-	pointer-events: none;
-	-moz-pointer-events: none;
-}
 #container #bottom .content .projects .page .info {
 	position: relative;
 	margin: 0 auto;
 	width: 941px;
 	height: 493px;
+	text-shadow: #333 1px 1px 1px;
 }
 #container #bottom .content .projects .page .info img {
 	position: absolute;
@@ -698,6 +686,9 @@ nav .menu .item.title a:hover {
 	text-transform: uppercase;
 	width: 278px;
 	font-size: 90%;
+}
+#container #bottom .content .projects .page .info h2 {
+	color: white;
 }
 #container #bottom .content .projects .page .info h3 {
 	display: block;
@@ -717,6 +708,10 @@ nav .menu .item.title a:hover {
 	width: 278px;
 	text-align: justify;
 }
+#container #bottom .content .projects .light.page .info p {
+	color: black;
+	text-shadow: none;
+}
 #container #bottom .content .projects .page .info a,
 #container #bottom .content .projects .page .info a:link,
 #container #bottom .content .projects .page .info a:active,
@@ -727,6 +722,12 @@ nav .menu .item.title a:hover {
 	top: 245px;
 	width: 278px;
 	color: #ddd;
+}
+#container #bottom .content .projects .light.page .info a,
+#container #bottom .content .projects .light.page .info a:link,
+#container #bottom .content .projects .light.page .info a:active,
+#container #bottom .content .projects .light.page .info a:hover {
+	color:white;
 }
 footer {
 	position: relative;
