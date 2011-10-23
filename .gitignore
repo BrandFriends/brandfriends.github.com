@@ -1,3 +1,4 @@
 .idea
 .monitor
 .DS_Store
+deploy.sh
