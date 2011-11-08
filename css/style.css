@@ -693,7 +693,8 @@ nav .menu .item.title a:hover {
     height: 493px;
 }
 
-#container #bottom .content .projects .page .info img {
+#container #bottom .content .projects .page .info img,
+#container #bottom .content .projects .page .info video{
     position: absolute;
     display: block;
     left: 0;
