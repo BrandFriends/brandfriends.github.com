@@ -1,111 +1,91 @@
-// Remove the id's from the pages
-//  so page does not scroll down
-//  when a link is clicked.
-//  From this point on the navigation
-//  is controlled by JavaScript.
-$(".page").attr("id", null);
+$(document).ready(function () {
 
-window.onhashchange = function () {
-	var location = window.location.hash.substr(1) || "news";
-	console.log("location: " + location);
+	// Remove the id's from the pages
+	//  so page does not scroll down
+	//  when a link is clicked.
+	//  From this point on the navigation
+	//  is controlled by JavaScript.
+	$(".page").attr("id", null);
 
-	if (location.indexOf("page") === 0) {
-		// reset the current page in projects section in the beginning
-		$(".button").removeClass("current");
+	$(".buttons.panel").delegate(".button", "click", function onclick() {
+		console.log("href", this.getAttribute("href"));
+		return false;
+	});
 
-		var pageNumber = location.substr(4);
+	window.onhashchange = function () {
 
-		$(".button").each(function () {
-			if ($(this).text() === pageNumber) {
+		var hash = window.location.hash.substr(1) || "";//news";
+		(function navigateThroughProjectTabs() {
+			if (hash.indexOf("page") === 0) {
+				// reset the current page in projects section in the beginning
+				$(".button").removeClass("current");
 
-				//console.log("Targeted button: " + pageNumber);
-				$(this).addClass("current");
+				var pageNumber = hash.substr(4);
+
+				$(".button").each(function () {
+					if ($(this).text() === pageNumber) {
+
+						$(this).addClass("current");
+					}
+				});
+
+				var number = parseInt(pageNumber) - 1;
+				$("#bottom .pages").css("left", (number * -100) + "%");
+				return;
 			}
-		});
+		}());
 
-		var number = parseInt(pageNumber) - 1;
-		$("#bottom .pages").css("left", (number * -100) + "%");
-		return;
-	}
+		(function navigateThroughProjects() {
 
-	console.log(".peojects.position.top: " + $(".projects").position().top);
+			var indexOfProject = hash.indexOf("project");
 
-	var indexOfProject = location.indexOf("project");
-	console.log("indexOfProject: " + indexOfProject);
-	if (indexOfProject > 0) {
+			if (indexOfProject > 0) {
 
-		var prevNextProject = location.substr(0, indexOfProject);
+				var prevNextProject = hash.substr(0, indexOfProject);
 
-		// set this project to its first (leftmost) page
-		$("#bottom .pages").css("left", 0);
+				// set this project to its first (leftmost) page
+				$("#bottom .pages").css("left", 0);
 
-		if ($(".projects").position().top < 0) {
-			$(".projects").css("top", 0);
-			$(".projects .project").removeClass("current").first().addClass("current");
-			$(".button").removeClass("current");
+				if ($(".projects").position().top < 0) {
+					$(".projects").css("top", 0);
+					$(".projects .project").removeClass("current").first().addClass("current");
+					$(".button").removeClass("current");
 
-			$(".projects .project.current .button").each(function () {
-				if ($(this).text() === "1") {
-					console.log("Add class current to button!");
-					$(this).addClass("current");
+					$(".projects .project.current .button").each(function () {
+						if ($(this).text() === "1") {
+							$(this).addClass("current");
+						}
+					});
+				} else {
+
+					$(".projects").css("top", -$(".projects").height());
+					$(".projects .project").removeClass("current").last().addClass("current");
+					$(".button").removeClass("current");
+
+					$(".projects .project.current .button").each(function () {
+						if ($(this).text() === "1") {
+							$(this).addClass("current");
+						}
+					});
 				}
-			});
-		} else {
-			$(".projects").css("top", -$(".projects").height());
-			$(".projects .project").removeClass("current").last().addClass("current");
-			$(".button").removeClass("current");
 
-			$(".projects .project.current .button").each(function () {
-				if ($(this).text() === "1") {
-					console.log("Add class current to button!");
-					$(this).addClass("current");
-				}
-			});
-		}
+				window.location.hash = "#done";
+				return;
+			}
 
-		window.location.hash = "#done";
-		return;
-	}
+		}());
 
-	/*
-	 if (location === "previousproject") {
+		(function navigateThroughPages() {
+			var requestedPage$ = $("#top .page." + hash);
+			if (requestedPage$.length) {
+				var pageTop = requestedPage$.position().top;
+				$("#top .pages").css("top", pageTop * -1);
 
-	 $("#bottom .pages").css("left", 0);
+				window.scrollTo(0, 0);
+			}
+		}());
 
-	 if ($(".projects").position().top < 0) {
-	 $(".projects").css("top", 0);
-	 } else {
-	 $(".projects").css("top", -$(".projects").height());
-	 }
+	};
 
-	 window.location.hash = "#done";
-	 return;
-
-	 } else if (location === "nextproject") {
-
-	 $("#bottom .pages").css("left", 0);
-	 if ($(".projects").position().top < 0) {
-	 $(".projects").css("top", 0);
-	 } else {
-	 $(".projects").css("top", -$(".projects").height());
-	 }
-	 window.location.hash = "#done";
-	 return;
-	 }
-	 */
-	var page$ = $("#top ." + location + ".page");
-
-	if (!page$.length) {
-		page$ = $("#top .news.page");
-	}
-
-	var pageTop = page$.position().top;
-	console.log("pageTop", pageTop);
-	$("#top .pages").css("top", pageTop * -1);
-
-	page$.removeClass("hidden");
-
-	window.scrollTo(0, 0);
-};
-
-window.onhashchange();
+	window.onhashchange();
+});
