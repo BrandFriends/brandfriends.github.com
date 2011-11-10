@@ -93,8 +93,10 @@
 				}
 
 				$("#bottom .projects .current.project").removeClass("current");
-				project$.addClass("current");
-				$(".projects").css("top", -project$.position().top);
+				if (project$.length > 0) {
+					project$.addClass("current");
+					$(".projects").css("top", -project$.position().top);
+				}
 				$(".tab.panel .current", project$).removeClass("current");
 				$(".tab.panel .button[href=#tab" + 1 + "]", project$).addClass("current");
 			}
@@ -132,10 +134,11 @@
 			}
 			// See if there is a page with the specified name
 			var requestedPage$ = $("#top .page." + hashInfo.values.page)
-				, pageTop = requestedPage$.position().top;
+				, pageTop;
 
 			// If there is, then scroll the page into view
 			if (requestedPage$.length) {
+				pageTop = requestedPage$.position().top;
 				$("#top .pages").css("top", pageTop * -1);
 				window.scrollTo(0, 0);
 			}
