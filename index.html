@@ -143,21 +143,21 @@
 </div>
 <div id="bottom">
 	<div class="content">
-		<div class="buttons panel top">
-			<a class="previous button" href="#previousproject">Previous Project</a>
+		<div class="project buttons panel top">
+			<a class="previous button" href="#previous">Previous Project</a>
 		</div>
-		<div class="buttons panel bottom">
-			<a class="next button" href="#nextproject">Next Project</a>
+		<div class="project buttons panel bottom">
+			<a class="next button" href="#next">Next Project</a>
 		</div>
 		<div class="projects">
-			<div class="project">
-				<div class="buttons panel">
-					<a class="button" href="#page1">1</a>
-					<a class="button" href="#page2">2</a>
-					<a class="button" href="#page3">3</a>
+			<div id="gamenuts" class="project current">
+				<div class="tab buttons panel">
+					<a class="button current" href="#tab1">1</a>
+					<a class="button" href="#tab2">2</a>
+					<a class="button" href="#tab3">3</a>
 				</div>
-				<div class="pages">
-					<div class="page dark">
+				<div class="tabs">
+					<div class="tab dark">
 						<div class="info">
 							<h2>Corporate / TV ID 1</h2>
 
@@ -175,7 +175,7 @@
 							<a href="#">www.gamenuts.be</a>
 						</div>
 					</div>
-					<div class="page light">
+					<div class="tab light">
 						<div class="info">
 							<h2>Corporate / TV ID 2</h2>
 
@@ -192,13 +192,13 @@
 					</div>
 				</div>
 			</div>
-			<div class="project">
-				<div class="buttons panel">
-					<a class="button" href="#page1">1</a>
-					<a class="button" href="#page2">2</a>
+			<div id="chatney" class="project">
+				<div class="tab buttons panel">
+					<a class="button" href="#tab1">1</a>
+					<a class="button" href="#tab2">2</a>
 				</div>
-				<div class="pages">
-					<div class="page dark">
+				<div class="tabs">
+					<div class="tab dark">
 						<div class="info">
 							<h2>Corporate / TV ID 1</h2>
 
@@ -213,7 +213,7 @@
 							<a href="#">www.gamenuts.be</a>
 						</div>
 					</div>
-					<div class="page light">
+					<div class="tab light">
 						<div class="info">
 							<h2>Corporate / TV ID 2</h2>
 
@@ -250,6 +250,12 @@
 <!-- scripts concatenated and minified via ant build script-->
 <script defer src="js/plugins.js"></script>
 <script defer src="js/script.js"></script>
+<script defer src="js/mylibs/crafity.objects.js"></script>
+<script defer src="js/mylibs/crafity.Exception.js"></script>
+<script defer src="js/mylibs/crafity.common.js"></script>
+<script defer src="js/mylibs/crafity.arrays.js"></script>
+<script defer src="js/mylibs/crafity.Event.js"></script>
+<script defer src="js/mylibs/crafity.navigation.js"></script>
 <script defer src="js/mylibs/brandfriends.js"></script>
 <!-- end scripts-->
 

@@ -646,7 +646,7 @@ nav .menu .item.title a:hover {
     background-color: #ff3e3e;
 }
 
-#container #bottom .content .projects .pages {
+#container #bottom .content .projects .tabs {
     -webkit-transition: left 600ms ease-out;
     -moz-transition: left 600ms ease-out;
     -o-transition: left 600ms ease-out;
@@ -658,17 +658,17 @@ nav .menu .item.title a:hover {
     width: 200%;
 }
 
-#container #bottom .content .projects .page {
+#container #bottom .content .projects .tab {
     float: left;
     width: 50%;
 }
 
-#container #bottom .content .projects .page.light {
+#container #bottom .content .projects .tab.light {
     background: url("../img/orange_bg.jpg") top left repeat-x;
     color: #ddd;
 }
 
-#container #bottom .content .projects .page:after {
+#container #bottom .content .projects .tab:after {
     content: "";
     display: block;
     position: absolute;
@@ -681,20 +681,20 @@ nav .menu .item.title a:hover {
     -moz-pointer-events: none;
 }
 
-#container #bottom .content .projects .page.dark {
+#container #bottom .content .projects .tab.dark {
     background: url("../img/BG_portfolio_01.jpg") top left repeat-x;
     color: #ddd;
 }
 
-#container #bottom .content .projects .page .info {
+#container #bottom .content .projects .tab .info {
     position: relative;
     margin: 0 auto;
     width: 941px;
     height: 493px;
 }
 
-#container #bottom .content .projects .page .info img,
-#container #bottom .content .projects .page .info video{
+#container #bottom .content .projects .tab .info img,
+#container #bottom .content .projects .tab .info video{
     position: absolute;
     display: block;
     left: 0;
@@ -703,7 +703,7 @@ nav .menu .item.title a:hover {
 }
 
 
-#container #bottom .content .projects .page .info h2 {
+#container #bottom .content .projects .tab .info h2 {
     position: absolute;
     display: block;
     right: 0;
@@ -714,11 +714,11 @@ nav .menu .item.title a:hover {
     font-weight: 400;
 }
 
-#container #bottom .content .projects .page .info h2 {
+#container #bottom .content .projects .tab .info h2 {
     color: #ffffff;
 }
 
-#container #bottom .content .projects .page .info h3 {
+#container #bottom .content .projects .tab .info h3 {
     display: block;
     position: absolute;
     right: 0;
@@ -730,7 +730,7 @@ nav .menu .item.title a:hover {
     font-weight: 800;
 }
 
-#container #bottom .content .projects .page .info p {
+#container #bottom .content .projects .tab .info p {
     display: block;
     position: absolute;
     right: 0;
@@ -741,15 +741,15 @@ nav .menu .item.title a:hover {
     font-weight: 600;
 }
 
-#container #bottom .content .projects .light.page .info p {
+#container #bottom .content .projects .light.tab .info p {
     color: black;
     text-shadow: none;
 }
 
-#container #bottom .content .projects .page .info a,
-#container #bottom .content .projects .page .info a:link,
-#container #bottom .content .projects .page .info a:active,
-#container #bottom .content .projects .page .info a:hover {
+#container #bottom .content .projects .tab .info a,
+#container #bottom .content .projects .tab .info a:link,
+#container #bottom .content .projects .tab .info a:active,
+#container #bottom .content .projects .tab .info a:hover {
     display: block;
     position: absolute;
     right: 0;
@@ -758,10 +758,10 @@ nav .menu .item.title a:hover {
     color: #ddd;
 }
 
-#container #bottom .content .projects .light.page .info a,
-#container #bottom .content .projects .light.page .info a:link,
-#container #bottom .content .projects .light.page .info a:active,
-#container #bottom .content .projects .light.page .info a:hover {
+#container #bottom .content .projects .light.tab .info a,
+#container #bottom .content .projects .light.tab .info a:link,
+#container #bottom .content .projects .light.tab .info a:active,
+#container #bottom .content .projects .light.tab .info a:hover {
     color: white;
 }
 

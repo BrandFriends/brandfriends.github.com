@@ -1,4 +1,21 @@
-$(document).ready(function () {
+/*jslint bitwise: true, unparam: true, maxerr: 50, white: true */
+/*globals window, setTimeout, jQuery*/
+/*!
+ * crafity.arrays
+ * Copyright(c) 2011 Crafity
+ * Copyright(c) 2011 Bart Riemens
+ * Copyright(c) 2011 Galina Slavova
+ * MIT Licensed
+ */
+
+(function (crafity, $) {
+	"use strict";
+
+	if (!crafity.navigation) {
+		throw new Error("Missing dependency 'crafity.navigation'");
+	}
+
+	var hashInfo = crafity.navigation.hashInfo;
 
 	// Remove the id's from the pages
 	//  so page does not scroll down
@@ -7,85 +24,123 @@ $(document).ready(function () {
 	//  is controlled by JavaScript.
 	$(".page").attr("id", null);
 
-	$(".buttons.panel").delegate(".button", "click", function onclick() {
-		console.log("href", this.getAttribute("href"));
+	$(".project.buttons.panel").delegate(".button", "click", function onclick() {
+		var currentProject$ = $(".projects .current.project")
+			, project = "", nextProject$, previousProject$;
+		if (this.getAttribute("href") === "#next") {
+			nextProject$ = currentProject$.next();
+			// If there is no next project,
+			//  then check the first project
+			if (nextProject$.length === 0) {
+				nextProject$ = $(".projects .project:first");
+			}
+			// If there is still no project,
+			//  then there is something wrong
+			if (nextProject$.length === 0) {
+				throw new Error("Unable to find a project");
+			}
+			project = nextProject$.attr("id");
+		} else if (this.getAttribute("href") === "#previous") {
+			previousProject$ = currentProject$.prev();
+			// If there is no previous project,
+			//  then check the last project
+			if (previousProject$.length === 0) {
+				previousProject$ = $(".projects .project:last");
+			}
+			// If there is still no project,
+			//  then there is something wrong
+			if (previousProject$.length === 0) {
+				throw new Error("Unable to find a project");
+			}
+			project = previousProject$.attr("id");
+		} else {
+			throw new Error("Unknown command");
+		}
+		hashInfo.change({ project: project, tab: 1 });
+		return false;
+	});
+	$(".tab.buttons.panel").delegate(".button", "click", function onclick() {
+		hashInfo.change({ tab: this.getAttribute("href").substr(4) });
+		return false;
+	});
+	$(".main.menu").delegate(".item a", "click", function onclick() {
+		hashInfo.change({ page: this.getAttribute("href").substr(1) });
 		return false;
 	});
 
-	window.onhashchange = function () {
+	hashInfo.onChange.subscribe(function (hashString, values, previousValues) {
+		(function navigateThroughProjects() {
 
-		var hash = window.location.hash.substr(1) || "";//news";
-		(function navigateThroughProjectTabs() {
-			if (hash.indexOf("page") === 0) {
-				// reset the current page in projects section in the beginning
-				$(".button").removeClass("current");
-
-				var pageNumber = hash.substr(4);
-
-				$(".button").each(function () {
-					if ($(this).text() === pageNumber) {
-
-						$(this).addClass("current");
-					}
-				});
-
-				var number = parseInt(pageNumber) - 1;
-				$("#bottom .pages").css("left", (number * -100) + "%");
+			// If there is no project specified or the project didn't change
+			//  then don't do anything with the project
+			if ((!values.project && !previousValues.project) ||
+				values.project === previousValues.project) {
 				return;
+
+			} else {
+
+				var project$ = $("#bottom .projects .project#" + values.project)
+					, lastShownTabs = $("#bottom .current.project .tabs");
+
+				if (project$.hasClass("current")) {
+					return;
+				}
+
+				if (values.project !== previousValues.project) {
+					setTimeout(function () {
+						lastShownTabs.css("left", "0%");
+					}, 400);
+				}
+
+				$("#bottom .projects .current.project").removeClass("current");
+				project$.addClass("current");
+				$(".projects").css("top", -project$.position().top);
+				$(".tab.panel .current", project$).removeClass("current");
+				$(".tab.panel .button[href=#tab" + 1 + "]", project$).addClass("current");
 			}
 		}());
 
-		(function navigateThroughProjects() {
-
-			var indexOfProject = hash.indexOf("project");
-
-			if (indexOfProject > 0) {
-
-				var prevNextProject = hash.substr(0, indexOfProject);
-
-				// set this project to its first (leftmost) page
-				$("#bottom .pages").css("left", 0);
-
-				if ($(".projects").position().top < 0) {
-					$(".projects").css("top", 0);
-					$(".projects .project").removeClass("current").first().addClass("current");
-					$(".button").removeClass("current");
-
-					$(".projects .project.current .button").each(function () {
-						if ($(this).text() === "1") {
-							$(this).addClass("current");
-						}
-					});
-				} else {
-
-					$(".projects").css("top", -$(".projects").height());
-					$(".projects .project").removeClass("current").last().addClass("current");
-					$(".button").removeClass("current");
-
-					$(".projects .project.current .button").each(function () {
-						if ($(this).text() === "1") {
-							$(this).addClass("current");
-						}
-					});
-				}
-
-				window.location.hash = "#done";
+		(function navigateThroughProjectTabs() {
+			// If there is no tab specified or the tab didn't change
+			//  then don't do anything with the tab
+			if ((!values.tab && !previousValues.tab) ||
+				values.tab === previousValues.tab) {
 				return;
 			}
+
+			// reset the current page in projects section in the beginning
+			var buttons$ = $(".tab .button").removeClass("current")
+				, number = parseInt(values.tab, 10) - 1;
+
+			buttons$.each(function () {
+				if ($(this).text() === values.tab) {
+					$(this).addClass("current");
+				}
+			});
+
+			$("#bottom .current.project .tabs")
+				.css("left", (number * -100) + "%");
 
 		}());
 
 		(function navigateThroughPages() {
-			var requestedPage$ = $("#top .page." + hash);
-			if (requestedPage$.length) {
-				var pageTop = requestedPage$.position().top;
-				$("#top .pages").css("top", pageTop * -1);
+			// If there is no page specified or the page didn't change
+			//  then don't do anything with the page
+			if ((!values.page && !previousValues.page) ||
+				values.page === previousValues.page) {
+				return;
+			}
+			// See if there is a page with the specified name
+			var requestedPage$ = $("#top .page." + hashInfo.values.page)
+				, pageTop = requestedPage$.position().top;
 
+			// If there is, then scroll the page into view
+			if (requestedPage$.length) {
+				$("#top .pages").css("top", pageTop * -1);
 				window.scrollTo(0, 0);
 			}
 		}());
 
-	};
+	});
 
-	window.onhashchange();
-});
+}(window.crafity = window.crafity || {}, jQuery));
