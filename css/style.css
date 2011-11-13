@@ -487,8 +487,15 @@ nav .menu .item.title a:hover {
 #container #top {
 	position: relative;
 	z-index: 1000;
-	background: url('../img/BG_TOP.gif') bottom center no-repeat;
+	background-color: white;
+	/*background: url('../img/BG_TOP.gif') bottom center no-repeat;*/
 	box-shadow: 0 1px 17px 1px #3b3b3b; /*0 0 4px black; */
+}
+
+@media (min-width: 1485px) {
+	#container #top {
+		background: url('../img/BG_TOP.gif') bottom center no-repeat;
+	}
 }
 
 #container #bottom {
@@ -742,6 +749,10 @@ nav .menu .item.title a:hover {
 	text-transform: uppercase;
 }
 
+#container #bottom .content .projects .tab .info video img {
+	top: 0;
+}
+
 #container #bottom .content .projects .tab .info h2 {
     margin:  0;
     padding:  0;
@@ -782,10 +793,11 @@ nav .menu .item.title a:hover {
 	text-align: justify;
 	font-size: 11pt;
 	font-weight: 600;
+	margin: 0;
+	padding: 0;
 }
 
 #container #bottom .content .projects .light.tab .info p {
-	/*color: black;*/
 	text-shadow: none;
 }
 
@@ -799,6 +811,7 @@ nav .menu .item.title a:hover {
 	top: 245px;
 	width: 278px;
 	color: #ddd;
+	line-height: 1.3em;
 }
 
 #container #bottom .content .projects .light.tab .info a,
