@@ -22,12 +22,12 @@
 	//  when a link is clicked.
 	//  From this point on the navigation
 	//  is controlled by JavaScript.
-	$(".page").attr("id", null);
+	$(".page").attr("id", "");
 
 	$(".project.buttons.panel").delegate(".button", "click", function onclick() {
 		var currentProject$ = $(".projects .current.project")
 			, project = "", nextProject$, previousProject$;
-		if (this.getAttribute("href") === "#next") {
+		if (this.getAttribute("href").match(/#next$/)) {
 			nextProject$ = currentProject$.next();
 			// If there is no next project,
 			//  then check the first project
@@ -40,7 +40,7 @@
 				throw new Error("Unable to find a project");
 			}
 			project = nextProject$.attr("id");
-		} else if (this.getAttribute("href") === "#previous") {
+		} else if (this.getAttribute("href").match(/#previous$/)) {
 			previousProject$ = currentProject$.prev();
 			// If there is no previous project,
 			//  then check the last project
@@ -60,11 +60,11 @@
 		return false;
 	});
 	$(".tab.buttons.panel").delegate(".button", "click", function onclick() {
-		hashInfo.change({ tab: this.getAttribute("href").substr(4) });
+		hashInfo.change({ tab: this.getAttribute("href").match(/(?!#tab)[0-9]+(?=$)/) });
 		return false;
 	});
 	$(".main.menu").delegate(".item a", "click", function onclick() {
-		hashInfo.change({ page: this.getAttribute("href").substr(1) });
+		hashInfo.change({ page: this.getAttribute("href").match(/(?!#)[a-zA-Z0-9\-]+(?=$)/) });
 		return false;
 	});
 
@@ -139,7 +139,9 @@
 			// If there is, then scroll the page into view
 			if (requestedPage$.length) {
 				pageTop = requestedPage$.position().top;
-				$("#top .pages").css("top", pageTop * -1);
+				//$("#top .pages").css("top", (-1 * pageTop) + "px");
+
+				$("#top .pages").css("top", -requestedPage$.position().top);
 				window.scrollTo(0, 0);
 			}
 		}());

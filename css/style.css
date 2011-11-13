@@ -475,7 +475,9 @@ nav .menu .item.title a:hover {
 
 #header {
 	margin: 0 auto;
+	padding: 0;
 	width: 941px;
+	position: relative;
 }
 
 #container {
@@ -512,12 +514,7 @@ nav .menu .item.title a:hover {
 }
 
 #container #top .content .page {
-	position: relative;
-	display: block;
-	padding: 0;
-	margin: 0;
 	height: 269px;
-	float: left;
 }
 
 #container #top .content .page.hidden {
