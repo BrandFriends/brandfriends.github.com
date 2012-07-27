@@ -707,7 +707,7 @@ nav .menu .item.title a:hover {
 	width: 50%;
 }
 #container #bottom .content .projects .three.tabs .tab {
-	width: 33%;
+	width: 33.333%;
 }
 .no-js #container #bottom .content .projects .tab {
 	float: none;
