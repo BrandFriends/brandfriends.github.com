@@ -690,6 +690,10 @@ nav .menu .item.title a:hover {
 	height: 100%;
 	width: 200%;
 }
+#container #bottom .content .projects .three.tabs {
+	width: 300%;
+}
+
 .no-js #container #bottom .content .projects .tabs {
 	position: inherit;
 	top: auto;
@@ -701,6 +705,9 @@ nav .menu .item.title a:hover {
 #container #bottom .content .projects .tab {
 	float: left;
 	width: 50%;
+}
+#container #bottom .content .projects .three.tabs .tab {
+	width: 33%;
 }
 .no-js #container #bottom .content .projects .tab {
 	float: none;
