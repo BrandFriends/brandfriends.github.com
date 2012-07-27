@@ -73,6 +73,7 @@
 			hashTag = self.toString();
 
 			window$.get(0).location.hash = hashTag ? "#" + hashTag : "";
+			window$.trigger("hashchange");
 		};
 
 		window$.bind("hashchange", function () {
